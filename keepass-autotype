@@ -1,0 +1,15 @@
+#!/bin/sh
+
+PROCESS_REGEXP='mono /usr/lib/keepass/KeePass.exe'
+
+PID=`pgrep -f "$PROCESS_REGEXP"`
+
+if [ -z "$SELECTED" ]; then
+    if [ -z "$PID" ]; then
+	autotype=t keepass &
+    else
+	keepass -auto-type
+    fi
+else
+    keepass -auto-type-selected
+fi
